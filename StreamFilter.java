@@ -5,6 +5,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.toMap;
+
 public class StreamFilter {
     public static void main(String[] args) {
         List<Product> productsList = new ArrayList<Product>();
@@ -71,7 +73,7 @@ public class StreamFilter {
                 .collect(Collectors.toSet());
         System.out.println(productPriceList);
 
-         Map<Integer, String> map = productsList.stream().collect(Collectors.toMap(p -> p.id, p -> p.name));
+         Map<Integer, String> map = productsList.stream().collect(toMap(p -> p.id, p -> p.name));
         System.out.println(map);
         HashMap<Integer, Integer> map1
                 = new HashMap<Integer, Integer>();
@@ -114,18 +116,14 @@ public class StreamFilter {
                 println(playersPercentileCount);
 
         String str = "aw bw cw aw bw ew fg fg rwd dw dw dw bw bw cw cw";
-        Map<String, Integer> wordMap = new HashMap<>();
 
-        for (int i = 0; i < str.split(" ").length; i++) {
-            wordMap.put(str.split(" ")[i], i);
-        }
-        System.out.println(wordMap);
+        Map<String,Integer> listToMap = Arrays.stream(str.split(" "))
+                .collect(Collectors.toMap(k -> k, k->1, (e,n) -> e+1));
 
-        System.out.println(wordMap.entrySet().stream()
-                .max(Comparator.comparing(Map.Entry::getValue))
-                .orElse(null));
 
-        int maxEntry = Collections.max(wordMap.entrySet(), Map.Entry.comparingByKey()).getValue();
+        System.out.println("print------------>"+listToMap);
+
+        int maxEntry = Collections.max(listToMap.entrySet(), Map.Entry.comparingByKey()).getValue();
         System.out.println(maxEntry);
 
 
