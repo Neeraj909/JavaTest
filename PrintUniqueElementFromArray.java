@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class PrintUniqueElementFromArray {
     public static void main(String[] args) {
-        int inputArray[]={1,1,2,3,2,4,2,5,1};
+        int inputArray[]={1,1,2,3,2,4,2,5,1,1,2,3,4,4,4,5,5,5,6,6,6,9};
         int size= inputArray.length-1;
 
         for(int i=0;i<size;i++){

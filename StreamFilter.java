@@ -22,6 +22,8 @@ public class StreamFilter {
                 toList();
         System.out.println("priceFilter-->" + priceFilter);
 
+
+
         List<Integer> list1 = new ArrayList<>();
         list1.add(2);
         list1.add(3);
@@ -31,7 +33,15 @@ public class StreamFilter {
         list1.add(7);
         Integer maxValue = list1.stream().mapToInt(v -> v).min().orElseThrow(NoSuchElementException::new);
         System.out.println(maxValue);
+        // Creating list of integers
+        List<Integer> array = Arrays.asList(-2, 1, 4, 6, 8);
 
+        // Finding sum of all elements
+        int sum = array.stream().reduce(2,
+                (element1, element2) -> element1 * element2);
+
+        // Displaying sum of all elements
+        System.out.println("The sum of all elements is " + sum);
 
         Stream.iterate(1, element -> element + 1)
                 .filter(element -> element % 5 == 0)
@@ -61,7 +71,7 @@ public class StreamFilter {
                 .collect(Collectors.toSet());
         System.out.println(productPriceList);
 
-        Map<Integer, String> map = productsList.stream().collect(Collectors.toMap(p -> p.id, p -> p.name));
+         Map<Integer, String> map = productsList.stream().collect(Collectors.toMap(p -> p.id, p -> p.name));
         System.out.println(map);
         HashMap<Integer, Integer> map1
                 = new HashMap<Integer, Integer>();
