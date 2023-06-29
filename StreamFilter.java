@@ -115,9 +115,9 @@ public class StreamFilter {
         System.out.
                 println(playersPercentileCount);
 
-        String str = "aw bw cw aw bw ew fg fg rwd dw dw dw bw bw cw cw";
+        String str = "awbwcwawbwewfgfgrwddwdwdwbwbwcwcw";
 
-        Map<String,Integer> listToMap = Arrays.stream(str.split(" "))
+        Map<String,Integer> listToMap = Arrays.stream(str.split(""))
                 .collect(Collectors.toMap(k -> k, k->1, (e,n) -> e+1));
 
 
