@@ -2,7 +2,7 @@ package java8features;
 
 public class BinarySearchTrees {
      Node root;
-    static class Node{
+    class Node{
         Node left;
         Node right;
         int value;
@@ -40,10 +40,27 @@ public class BinarySearchTrees {
         }
 
     }
+    public boolean containsTree(int value){
+        Node temp=root;
+        while (temp!=null){
+            if(value<temp.value){
+                temp=temp.left;
+            } else if (value> temp.value) {
+                temp=temp.right;
+            }
+            else{
+                return true;
+            }
+
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         BinarySearchTrees binarySearchTrees=new BinarySearchTrees();
         System.out.println(binarySearchTrees.root);
+        BinarySearchTrees.Node n=binarySearchTrees.new Node(2);
+        System.out.println(n.left);
         binarySearchTrees.insertNode(47);
         binarySearchTrees.insertNode(21);
         binarySearchTrees.insertNode(76);
@@ -52,8 +69,8 @@ public class BinarySearchTrees {
         binarySearchTrees.insertNode(82);
         binarySearchTrees.insertNode(27);
         binarySearchTrees.insertNode(15);
+        binarySearchTrees.insertNode(15);
         System.out.println(binarySearchTrees.root.left.left.left.value);
-
-
+        System.out.println(binarySearchTrees.containsTree(27));
     }
 }
