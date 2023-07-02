@@ -1,7 +1,9 @@
 package java8features;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 public class ReversList {
     public static void main(String[] args) {
@@ -16,5 +18,10 @@ public class ReversList {
             j--;
         }
         System.out.println("After Revers"+list);
+        TreeMap<String,Integer> map= new TreeMap<>();
+        map.put("b",2);
+        map.put("c",1);
+        map.put("a",3);
+        System.out.println(map);
     }
 }
