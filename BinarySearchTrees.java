@@ -55,6 +55,36 @@ public class BinarySearchTrees {
         }
         return false;
     }
+    public boolean containsRecursionContains(Node currentNode,int value){
+        if(currentNode==null){
+            return false;
+        }
+        if(currentNode.value==value){
+            return true;
+        }
+        if(currentNode.value>value){
+            return containsRecursionContains(currentNode.left,value);
+        }
+        else{
+            return containsRecursionContains(currentNode.right,value);
+        }
+
+    }
+
+    public Node recursionInsertNode(Node currentNode,int value){
+        Node newNode=new Node(value);
+        if(currentNode==null){;
+            return newNode;
+        }
+        if(value<currentNode.value){
+            currentNode.left=recursionInsertNode(currentNode.left,value);
+        }
+        else if(value>currentNode.value){
+            currentNode.right=recursionInsertNode(currentNode.right,value);
+        }
+        return currentNode;
+
+    }
 
     public static void main(String[] args) {
         BinarySearchTrees binarySearchTrees=new BinarySearchTrees();
@@ -72,5 +102,6 @@ public class BinarySearchTrees {
         binarySearchTrees.insertNode(15);
         System.out.println(binarySearchTrees.root.left.left.left.value);
         System.out.println(binarySearchTrees.containsTree(27));
+        System.out.println(binarySearchTrees.containsRecursionContains(binarySearchTrees.root, 353));
     }
 }
