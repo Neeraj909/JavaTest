@@ -80,8 +80,33 @@ public class Sort {
         System.out.println("Merge Two Sort Array "+Arrays.toString(mergeArray));
 
     }
-    public void mergeSort(int[] arr){
+    public int[] mergeSort(int[] arr){
+        int midIndex=arr.length/2;
+        int[] left=mergeSort(Arrays.copyOfRange(arr,0,midIndex));
+        int[] right=mergeSort(Arrays.copyOfRange(arr,midIndex,arr.length));
+       return left;
+    }
 
+    public static void quickSort(int[] arr){
+
+        int pivot=arr[0];
+
+    }
+    public static int pivot(int[] arr,int pivotIndex,int endIndex){
+        int swapIndex=pivotIndex;
+        for(int i=pivotIndex+1;i<endIndex;i++){
+            if(arr[i]<arr[pivotIndex]){
+                swapIndex++;
+                swap(arr,swapIndex,i);
+            }
+        }
+        swap(arr,pivotIndex,swapIndex);
+        return swapIndex;
+    }
+    private static void swap(int[] arr,int firstIndex,int secondIndex){
+        int temp=arr[firstIndex];
+        arr[firstIndex]=arr[secondIndex];
+        arr[secondIndex]=temp;
     }
     public static void main(String[] args) {
         int[] arr ={2,1,4,9,0,5,6,3};
@@ -91,6 +116,10 @@ public class Sort {
         int[] arr1={1,3,5,8};
         int[] arr2={2,4,6,9};
         mergeTwoSortArray(arr1,arr2);
+        arr = new int[]{2, 1, 4, 9, 0, 5, 6, 3};
+        int returnIndex=pivot(arr,0,arr.length);
+        System.out.println(returnIndex);
+        System.out.println(Arrays.toString(arr));
 
     }
 }
