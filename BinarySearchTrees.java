@@ -1,5 +1,9 @@
 package java8features;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinarySearchTrees {
      Node root;
     class Node{
@@ -85,6 +89,25 @@ public class BinarySearchTrees {
         return currentNode;
 
     }
+    public ArrayList<Integer> BFS(){
+        Node currentNode=root;
+        Queue<Node> queue=new LinkedList<>();
+        ArrayList<Integer> results=new ArrayList<>();
+        queue.add(currentNode);
+        while (queue.size()>0){
+            currentNode=queue.remove();
+            results.add(currentNode.value);
+            if(currentNode.left!=null){
+                queue.add(currentNode.left);
+            }
+            if(currentNode.right!=null){
+                queue.add(currentNode.right);
+            }
+        }
+        return results;
+
+
+    }
 
     public static void main(String[] args) {
         BinarySearchTrees binarySearchTrees=new BinarySearchTrees();
@@ -99,9 +122,9 @@ public class BinarySearchTrees {
         binarySearchTrees.insertNode(82);
         binarySearchTrees.insertNode(27);
         binarySearchTrees.insertNode(15);
-        binarySearchTrees.insertNode(15);
         System.out.println(binarySearchTrees.root.left.left.left.value);
         System.out.println(binarySearchTrees.containsTree(27));
         System.out.println(binarySearchTrees.containsRecursionContains(binarySearchTrees.root, 353));
+        System.out.println(binarySearchTrees.BFS());
     }
 }
