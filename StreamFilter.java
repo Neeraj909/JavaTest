@@ -18,11 +18,11 @@ public class StreamFilter {
         productsList.add(new Product(5, "Apple Laptop", 90000f));
         productsList.add(new Product(6, "Apple Laptop", 90000f));
         productsList.add(new Product(7, "Apple Laptop", 80000f));
-        List<Float> priceFilter = productsList.stream().
+        /*List<Float> priceFilter = productsList.stream().
                 filter(p -> p.price > 30000).
                 map(p -> p.price).
-                toList();
-        System.out.println("priceFilter-->" + priceFilter);
+                toList();*/
+        //ystem.out.println("priceFilter-->" + priceFilter);
 
 
 
